@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Helper.sol": {
+      "content": "//SPDX-License-Identifier: MIT\npragma solidity ^0.7.0;\n\ncontract Helper {\n\n  function stringToBytes32(string memory source) public pure returns (bytes32 result) {\n    bytes memory temp = bytes(source);\n    if (temp.length == 0) {\n        return 0x0;\n    }\n\n    assembly {\n      result := mload(add(source, 32))\n    }\n  }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
